@@ -1,0 +1,40 @@
+README Tetris
+
+Overview:
+
+The main purpose of this program is to create a Tetris game that generates seven random pieces that fall down on a
+screen. These pieces can be controlled with key presses, Right, Left, Up, Down, Space, and P. Pressing space drops the
+piece to the bottom of the board, pressing P pauses the timeline, pressing up rotates the piece 90 degrees, and the
+other keys are what you would expect. This program features the App, PaneOrganizer, tetrisGame, Board, Pieces,
+tetrisSquare, and Constants classes. The App contains PaneOrganizer, which contains tetrisGame, which contains the
+Board, and so on. tetrisGame is responsible for most of the game's functions, like setting up the timeline, randomly
+generating the seven different pieces, creating the gameOver and Pause labels, keeping score once a row has been
+cleared, and setting up the restart capability. Board creates the 2D array board which is them added to the
+gamePane. It is also responsible for checking the validity of moving the pieces down, right, left, and rotationally.
+PaneOrganizer sets up the quit button at the bottom of the screen and organizes the gamePane as part of the borderPane.
+Pieces and tetrisSquare are responsible for the moving right, down, left, and rotation capabilities.
+
+Design Choices:
+
+Instead of creating one super class for pieces and then having seven different subclasses (which would have really
+complicated the code), I created one Pieces class. The constructor of Pieces took in a few parameters, including
+coordinates, the gamePane, the board, a color, and a boolean called rotate. Then, in the tetrisGame class, when
+generating random pieces using the switch statement, I simply passed in different parameter values for each of the seven
+pieces. For the rotate boolean parameter, I passed in true for all pieces except the square piece, since the square
+shouldn't respond to the up key press. Then in the switch statement for key press controls, I wrote an if statement
+that determines whether the rotate boolean is true for a certain piece. If so, the piece can respond to the up key
+press. This simplified the code through extensibility and made it very straightforward to add different types of pieces.
+In addition, in order for the pieces to actually move up, down, left, and rotationally, I created methods within the
+Pieces class and the tetrisSquare class. For each piece to be able to move, I had to move each individual square of the
+piece by one square width. This was achieved in my tetrisSquare class which set the X and Y location of each square to
+a new location, incrementing by one Constant square width.
+
+Known Bugs:
+None
+
+Debugging Collaborators:
+None
+
+Hours Spent:
+I spent approximately 30 hours on this project.
+
